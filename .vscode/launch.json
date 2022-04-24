@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "showDevDebugOutput": "parsed",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/build/multitool.elf",
+            "name": "Debug",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "preLaunchTask": "",
+            "device": "stm32h743",
+            "configFiles": [
+                "/usr/share/openocd/scripts/board/st_nucleo_h743zi.cfg"
+            ],
+            "svdFile": "${workspaceRoot}/STM32H743.svd"
+        }
+    ]
+}

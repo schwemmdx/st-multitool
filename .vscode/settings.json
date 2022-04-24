@@ -1,0 +1,19 @@
+{
+    //"cortex-debug.armToolchainPath": "/home/sven/.config/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/10.2.1-1.1.2/.content/bin",
+    //"cortex-debug.openocdPath": "/home/sven/.config/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-tools/openocd/0.11.0-1.1/.content/bin/openocd",
+    "files.associations": {
+        "gui_guider.h": "c",
+        "events_init.h": "c",
+        "main.h": "c",
+        "stm32h7xx_hal.h": "c",
+        "user_diskio.h": "c",
+        "fatfs_sd.h": "c",
+        "ff_gen_drv.h": "c",
+        "tim.h": "c",
+        "random": "c",
+        "limits": "c",
+        "app_main.h": "c",
+        "freertos.h": "c",
+        "portable.h": "c"
+    }
+}
