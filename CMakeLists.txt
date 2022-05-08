@@ -101,6 +101,7 @@ target_include_directories(${EXECUTABLE} PRIVATE
     ${DRV_INCLUDE_DIRECTORIES}
     )
 ###############################################################################
+add_compile_definitions(USE_MULTI_CORE_SHARED_CODE=0)
 target_compile_options(${EXECUTABLE} PRIVATE
 ${CPU_PARAMETERS}
     $<$<COMPILE_LANGUAGE:C>:-std=c11>
@@ -142,6 +143,8 @@ target_link_options(${EXECUTABLE} PRIVATE
     -lstdc++
     -Wl,--end-group
     -Wl,--print-memory-usage)
+
+
 
 set_property(TARGET ${PROJECT_NAME} PROPERTY LINK_DEPENDS ${CMAKE_SOURCE_DIR}/${LINKER_SCRIPT})
 # The last command can take a couple of seconds on larger project, usefull for debugging
