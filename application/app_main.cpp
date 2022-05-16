@@ -8,10 +8,12 @@
 
 #include "app_tasks.h"
 
+#include "ff.h"
+
 uint8_t app_main()
 {
     // At this point we call everything running in OS Layer
-
+    
     TaskHandle_t led1_handle;
     TaskHandle_t led2_handle;
 

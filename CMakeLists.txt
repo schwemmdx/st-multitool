@@ -61,6 +61,14 @@ file(GLOB RTOS_SOURCES CONFIGURE_DEPENDS
     ${MIDDLEWARE_DIR}/rtos/port/*.c
 )
 
+set(FATFS_INCLUDE_DIRECTORIES
+    ${MIDDLEWARE_DIR}/fatfs 
+)
+
+file(GLOB FATFS_SOURCES CONFIGURE_DEPENDS
+    ${MIDDLEWARE_DIR}/fatfs/*.c
+)
+
 set(APP_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/application)
 
 file(GLOB APP_SOURCES CONFIGURE_DEPENDS
@@ -81,7 +89,8 @@ add_executable(${EXECUTABLE}
     ${STM32CUBEMX_SOURCES} 
     ${APP_SOURCES}
     ${STARTUP_SCRIPT}
-    ${RTOS_SOURCES})
+    ${RTOS_SOURCES}
+    ${FATFS_SOURCES})
 
 
 
@@ -99,6 +108,7 @@ target_include_directories(${EXECUTABLE} PRIVATE
     ${APP_INCLUDE_DIRECTORIES}
     ${RTOS_INCLUDE_DIRECTORIES}
     ${DRV_INCLUDE_DIRECTORIES}
+    ${FATFS_INCLUDE_DIRECTORIES}
     )
 ###############################################################################
 add_compile_definitions(USE_MULTI_CORE_SHARED_CODE=0)

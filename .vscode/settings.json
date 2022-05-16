@@ -14,6 +14,7 @@
         "limits": "c",
         "app_main.h": "c",
         "freertos.h": "c",
-        "portable.h": "c"
+        "portable.h": "c",
+        "sd_spi_drv.h": "c"
     }
 }
