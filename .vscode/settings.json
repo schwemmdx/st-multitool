@@ -15,6 +15,9 @@
         "app_main.h": "c",
         "freertos.h": "c",
         "portable.h": "c",
-        "sd_spi_drv.h": "c"
-    }
+        "sd_spi_drv.h": "c",
+        "ff.h": "c",
+        "sd_spi_stm32h743.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }

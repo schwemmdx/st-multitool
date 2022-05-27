@@ -62,7 +62,7 @@ file(GLOB RTOS_SOURCES CONFIGURE_DEPENDS
 )
 
 set(FATFS_INCLUDE_DIRECTORIES
-    ${MIDDLEWARE_DIR}/fatfs 
+    ${MIDDLEWARE_DIR}/fatfs
 )
 
 file(GLOB FATFS_SOURCES CONFIGURE_DEPENDS
@@ -77,11 +77,15 @@ file(GLOB APP_SOURCES CONFIGURE_DEPENDS
     )
 
 set(DRV_INCLUDE_DIRECTORIES
-    ${DRV_DIR})
+    ${DRV_DIR}
+    ${DRV_DIR}/sd_card/port
+    ${DRV_DIR}/sd_card)
 
 file(GLOB DRV_SOURCES CONFIGURE_DEPENDS
     ${DRV_DIR}/*.cpp
     ${DRV_DIR}/*.c
+    ${DRV_DIR}/sd_card/*.c
+    ${DRV_DIR}/sd_card/port/*.c
     )
 
 
@@ -90,7 +94,8 @@ add_executable(${EXECUTABLE}
     ${APP_SOURCES}
     ${STARTUP_SCRIPT}
     ${RTOS_SOURCES}
-    ${FATFS_SOURCES})
+    ${FATFS_SOURCES}
+    ${DRV_SOURCES})
 
 
 
