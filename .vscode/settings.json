@@ -17,7 +17,9 @@
         "portable.h": "c",
         "sd_spi_drv.h": "c",
         "ff.h": "c",
-        "sd_spi_stm32h743.h": "c"
+        "sd_spi_stm32h743.h": "c",
+        "ffconf.h": "c"
     },
-    "C_Cpp.errorSquiggles": "Disabled"
+    "C_Cpp.errorSquiggles": "Disabled",
+    "cmake.configureOnOpen": true
 }
