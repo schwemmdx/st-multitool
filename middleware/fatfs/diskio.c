@@ -12,8 +12,8 @@
 #include "sd_spi.h"
 
 /* Definitions of physical drive number for each drive */
-#define DEV_RAM		0	/* Example: Map Ramdisk to physical drive 0 */
-#define DEV_MMC		1	/* Example: Map MMC/SD card to physical drive 1 */
+#define DEV_RAM		1	/* Example: Map Ramdisk to physical drive 0 */
+#define DEV_MMC		0	/* Example: Map MMC/SD card to physical drive 1 */
 #define DEV_USB		2	/* Example: Map USB MSD to physical drive 2 */
 
 
@@ -25,7 +25,7 @@ DSTATUS disk_status (
 	BYTE pdrv		/* Physical drive nmuber to identify the drive */
 )
 {
-	DSTATUS stat;
+	//DSTATUS stat;
 	int result;
 
 	switch (pdrv) {
@@ -34,24 +34,18 @@ DSTATUS disk_status (
 
 		// translate the reslut code here
 
-		return stat;
+		return STA_NODISK;
 
 	case DEV_MMC :
 		result = sd_disk_status(pdrv);
-
-		// translate the reslut code here
-		if(result == -1)
-		{
-			stat = STA_NOINIT;
-		}
-		return stat;
+		return result;
 
 	case DEV_USB :
 		//result = USB_disk_status();
 
 		// translate the reslut code here
 
-		return stat;
+		return STA_NODISK;
 	}
 	return STA_NOINIT;
 }
@@ -66,7 +60,7 @@ DSTATUS disk_initialize (
 	BYTE pdrv				/* Physical drive nmuber to identify the drive */
 )
 {
-	DSTATUS stat;
+
 	int result;
 
 	switch (pdrv) {
@@ -74,26 +68,21 @@ DSTATUS disk_initialize (
 		//result = RAM_disk_initialize();
 
 		// translate the reslut code here
-		result = RES_ERROR;
-		if (result)
-		{
-			
-		}
-		return STA_NOINIT;
+		return RES_ERROR;
 
 	case DEV_MMC :
 		result = sd_disk_initialize(pdrv);
 
 		// translate the reslut code here
 
-		return stat;
+		return result;
 
 	case DEV_USB :
 		//result = USB_disk_initialize();
 
 		// translate the reslut code here
 
-		return stat;
+		return RES_ERROR;
 	}
 	return STA_NOINIT;
 }
