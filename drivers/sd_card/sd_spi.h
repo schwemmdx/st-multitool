@@ -3,7 +3,11 @@
 
 #include "ff.h"
 #include "ffconf.h"
-#define _READONLY FF_FS_READONLY
+#ifdef FF_FS_READONLY
+    #define _READONLY FF_FS_READONLY
+#elif 
+    #define _READONLY 0
+#endif
 /*-----------------------------------------------------------------------*/
 /* Device Timer Interrupt Procedure  (Platform dependent)                */
 /*-----------------------------------------------------------------------*/
