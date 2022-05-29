@@ -33,7 +33,7 @@ extern void SELECT(void);
 extern void DESELECT(void);
 extern void xmit_spi(BYTE);
 extern BYTE rcvr_spi(void);
-
+extern DWORD sd_get_fattime(void);
 
 
 #endif /* _SD_SPI_STM32_H743ZI_H_ */
