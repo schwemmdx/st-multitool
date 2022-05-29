@@ -521,15 +521,8 @@ inline void sdcard_systick_timerproc(void) {
 /* FatFs module. Any valid time must be returned even if   */
 /* the system does not support a real time clock.          */
 
-DWORD sd_get_fattime(void) {
 
-	return ((2007UL - 1980) << 25) // Year = 2007
-	| (6UL << 21) // Month = June
-			| (5UL << 16) // Day = 5
-			| (11U << 11) // Hour = 11
-			| (38U << 5) // Min = 38
-			| (0U >> 1) // Sec = 0
-	;
-
+DWORD get_fattime(void)
+{
+	return sd_get_fattime();
 }
-
