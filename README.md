@@ -8,6 +8,7 @@ For professional's sake this is done in c, not in any of these hide-away-sdk's l
 
 ## Functions to be implemented
 ### Software
+- [X] Proper CMake Build Toolchain
 - [X] Manual port of FreeRTOS
 - [X] Manual port of FATFs 
 - [X] Driver for SD Card Drive
