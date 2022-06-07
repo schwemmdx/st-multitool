@@ -1,0 +1,19 @@
+
+https://github.com/MichalKs/STM32F4_SD/tree/master/STM32F4_SD
+
+
+
+ToDO:
+
+disk_timerproc() in systick timer handler integrieren, sodass ein Timeout erreicht werden kann
+
+- cli implementierung
+	- ls 
+	- mkdir
+	-rmdir
+	- chmod 
+	-cat
+	
+	spezeille funktionen:
+	- perph init adc
+
