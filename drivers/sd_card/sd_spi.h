@@ -3,6 +3,9 @@
 
 #include "ff.h"
 #include "ffconf.h"
+#include "diskio.h"
+
+
 #ifdef FF_FS_READONLY
     #define _READONLY FF_FS_READONLY
 #elif 
@@ -13,7 +16,7 @@
 /*-----------------------------------------------------------------------*/
 /* This function must be called in period of 10ms                        */
 
-void sdcard_systick_timerproc(void);
+extern void sdcard_systick_timerproc(void);
 
 extern DRESULT sd_disk_ioctl(BYTE, BYTE,void*);
 extern DSTATUS sd_disk_status (BYTE);

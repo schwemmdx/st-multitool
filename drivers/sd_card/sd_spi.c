@@ -189,9 +189,8 @@ BYTE token /* Data/Stop token */
 /* Send a command packet to MMC                                          */
 /*-----------------------------------------------------------------------*/
 
-static BYTE send_cmd(BYTE cmd, /* Command byte */
-DWORD arg /* Argument */
-) {
+static BYTE send_cmd(BYTE cmd, DWORD arg ) 
+{
 	BYTE n, res;
 
 	if (wait_ready() != 0xFF)
@@ -506,9 +505,9 @@ void disk_timerproc(void) {
 
 volatile unsigned short int sdcard_timer;
 
-inline void sdcard_systick_timerproc(void) {
+void sdcard_systick_timerproc(void) {
 	++sdcard_timer;
-	if (sdcard_timer >= 100) {
+	if (sdcard_timer >= 10) {
 		sdcard_timer = 0;
 		disk_timerproc();
 	}
