@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/sven/Nextcloud/Projekte/multitool'
+make: Leaving directory '/home/sven/Nextcloud/Projekte/multitool'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+
