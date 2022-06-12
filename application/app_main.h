@@ -7,7 +7,7 @@ extern "C"
 {
 #endif
 
-    uint8_t app_main();
+    uint8_t app_main(void);
 
 #ifdef __cplusplus
 }
