@@ -13,7 +13,7 @@ extern "C"
 EventLogger::EventLogger(std::string base_path)
 {
     this->logPath = base_path;
-    this->sessionFileName = this->getTimestamp();
+    this->sessionFileName = "debug";
 
     f_open(&this->pLogFile,(this->logPath+"/"+this->sessionFileName+".log").c_str(),FA_CREATE_ALWAYS  |FA_WRITE );
     f_close(&this->pLogFile);
@@ -53,5 +53,12 @@ void EventLogger::err(std::string errMsg)
 */
 std::string EventLogger::getTimestamp()
 {
-    return "[NO_RTC]";
+    if(this->useTimeStamp)
+    {
+        return "[NO_RTC]";
+    }
+    else
+    {
+        return "";
+    }
 }

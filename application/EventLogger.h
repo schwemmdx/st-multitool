@@ -33,13 +33,16 @@ class EventLogger
     void warn(std::string warnMsg);
     void err(std::string errMsg);
     void err(std::string errMsg,int errCode=-1);
+    void linkRTC(void);
     
     private:
-    void open_logfile(void);
+    bool useTimeStamp{false};
     std::string typeStamp{"NONE"};
     FIL pLogFile;
     std::string logPath;
     std::string sessionFileName;
+    
+    void open_logfile(void);
     std::string getTimestamp(void);
 
 };
