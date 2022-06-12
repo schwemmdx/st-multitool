@@ -20,7 +20,7 @@ void Thread1::run(void)
         HAL_Delay(100);
         HAL_GPIO_TogglePin(LD3_GPIO_Port, LD3_Pin);
         HAL_Delay(100);
-        vTaskDelay(200);
+        vTaskDelay(2000);
       
     }
 }
