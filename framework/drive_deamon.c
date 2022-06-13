@@ -1,7 +1,6 @@
 
-#include <string>
 
-#include "DriveDeamon.h"
+#include "drive_deamon.h"
 #include "ff.h"
 #include "main.h"
 
@@ -9,7 +8,38 @@
 #include "stm32h7xx_hal_gpio.h"
 
 
-DriveDeamon::DriveDeamon(std::string mountPoint)
+
+void fk_initDriveDeamon(char* mountPoint,fk_DriveDeamon_t* pDeamon)
+{
+    
+    pDeamon->fs_status = f_mount(&pDeamon->fileSystem,mountPoint,0);
+    if(pDeamon->fs_status == FR_OK)
+    {
+        pDeamon->mntPoint = mountPoint;
+
+    }
+    createFolderStructure();
+}
+
+static void createFolderStructure(void)
+{
+
+}
+
+fk_DriveSizeInfo_t fk_getSizeInfo(fk_DriveDeamon_t* pDeamon)
+{
+    fk_DriveSizeInfo_t sInfo;
+    DWORD nClust=0;
+    FATFS* dummyFS;
+    f_getfree(pDeamon->mntPoint,&nClust,&dummyFS);
+    //More calulations need to be done
+    sInfo.free = dummyFS->free_clst;
+    sInfo.total = dummyFS->fsize;
+    return sInfo;
+}
+
+/*
+void fwk_InitLogger( const char* mountPoint)
 {   
     this->fs_status = f_mount(&this->fileSystem,this->mntPoint.c_str(),MOUNT_INSTANT);
 
@@ -45,3 +75,4 @@ void DriveDeamon::errorHandler(void)
         //UART tell that drive is missing
     }
 }
+*/

@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "app_main.h"
+#include "application.h"
 
 /* USER CODE END Includes */
 
@@ -102,7 +102,7 @@ int main(void)
   MX_FMC_Init();
   MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
-  uint8_t appExitVal = app_main();
+  uint8_t appExitVal = application();
   if (appExitVal != 0)
   {
     // send error code via cli to user

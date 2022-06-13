@@ -30,7 +30,7 @@ set(MCU_LINKER_SCRIPT ${CUBEMX_DIR}/STM32H743ZITx_FLASH.ld)
 ###############################################################################
 set(EXECUTABLE ${CMAKE_PROJECT_NAME})
 
-enable_language(C CXX ASM)
+enable_language(C ASM)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS ON)
@@ -51,28 +51,21 @@ file(GLOB STM32CUBEMX_SOURCES CONFIGURE_DEPENDS
     ${CUBEMX_DIR}/Core/Src/*.c
 )
 
-set(RTOS_INCLUDE_DIRECTORIES 
+set(MIDDLEWARE_INCLUDE_DIRECTORIES 
     ${MIDDLEWARE_DIR}/rtos/include
     ${MIDDLEWARE_DIR}/rtos/port
-)
-
-file(GLOB RTOS_SOURCES CONFIGURE_DEPENDS
-    ${MIDDLEWARE_DIR}/rtos/*.c
-    ${MIDDLEWARE_DIR}/rtos/port/*.c
-)
-
-set(FATFS_INCLUDE_DIRECTORIES
     ${MIDDLEWARE_DIR}/fatfs
 )
 
-file(GLOB FATFS_SOURCES CONFIGURE_DEPENDS
+file(GLOB MIDDLEWARE_SOURCES CONFIGURE_DEPENDS
+    ${MIDDLEWARE_DIR}/rtos/*.c
+    ${MIDDLEWARE_DIR}/rtos/port/*.c
     ${MIDDLEWARE_DIR}/fatfs/*.c
 )
 
 set(APP_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/application)
 
 file(GLOB APP_SOURCES CONFIGURE_DEPENDS
-    ${APP_DIR}/*.cpp
     ${APP_DIR}/*.c
     )
 
@@ -82,19 +75,23 @@ set(DRV_INCLUDE_DIRECTORIES
     ${DRV_DIR}/sd_card)
 
 file(GLOB DRV_SOURCES CONFIGURE_DEPENDS
-    ${DRV_DIR}/*.cpp
     ${DRV_DIR}/*.c
     ${DRV_DIR}/sd_card/*.c
     ${DRV_DIR}/sd_card/port/*.c
     )
+set(FRAMEWORK_INCLUDE_DIRECTORY
+    ${CMAKE_CURRENT_SOURCE_DIR}/framework)
 
+file(GLOB FRAMEWORK_SOURCES CONFIGURE_DEPENDS
+    ${FRAMEWORK_INCLUDE_DIRECTORY}/*.c
+)
 
 add_executable(${EXECUTABLE}
     ${STM32CUBEMX_SOURCES} 
     ${APP_SOURCES}
     ${STARTUP_SCRIPT}
-    ${RTOS_SOURCES}
-    ${FATFS_SOURCES}
+    ${MIDDLEWARE_SOURCES}
+    ${FRAMEWORK_SOURCES}
     ${DRV_SOURCES})
 
 
@@ -113,7 +110,8 @@ target_include_directories(${EXECUTABLE} PRIVATE
     ${APP_INCLUDE_DIRECTORIES}
     ${RTOS_INCLUDE_DIRECTORIES}
     ${DRV_INCLUDE_DIRECTORIES}
-    ${FATFS_INCLUDE_DIRECTORIES}
+    ${MIDDLEWARE_INCLUDE_DIRECTORIES}
+    ${FRAMEWORK_INCLUDE_DIRECTORY}
     )
 ###############################################################################
 add_compile_definitions(USE_MULTI_CORE_SHARED_CODE=0)
