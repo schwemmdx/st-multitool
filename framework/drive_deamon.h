@@ -15,9 +15,11 @@
 #define DRIVE_MISSING   3
 
 
+
 typedef struct 
 {
     char* mntPoint;
+    uint8_t mntStatus;
     FATFS fileSystem;
     FRESULT fs_status;
     uint8_t mntStatus;

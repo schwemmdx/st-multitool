@@ -7,6 +7,7 @@
 #include "stm32h7xx_hal.h"
 #include "stm32h7xx_hal_gpio.h"
 
+#include "string.h"
 
 
 void fk_initDriveDeamon(char* mountPoint,fk_DriveDeamon_t* pDeamon)
@@ -16,14 +17,30 @@ void fk_initDriveDeamon(char* mountPoint,fk_DriveDeamon_t* pDeamon)
     if(pDeamon->fs_status == FR_OK)
     {
         pDeamon->mntPoint = mountPoint;
+        pDeamon->mntStatus = DRIVE_MOUNT_OK;
+        createFolderStructure();
 
     }
-    createFolderStructure();
+    else
+    {
+        pDeamon->mntPoint = NULL;
+        pDeamon->mntStatus = DRIVE_MOUNT_ERR;
+    }
+    
 }
 
-static void createFolderStructure(void)
+static void createFolderStructure(void,fk_DriveDeamon_t* pDeamon)
 {
+    char logs[]= "logs";
+    char config[]="config";
+    char data[] = "data";
+    char sys[] = "sys";
 
+    char dummy[20];
+    memset(dummy,0,sizeof(dummy));
+    strcat(dummy,pDeamon->mntPoint);
+    strcat(dummy,logs);
+    f_mkdir(dummy);
 }
 
 fk_DriveSizeInfo_t fk_getSizeInfo(fk_DriveDeamon_t* pDeamon)
