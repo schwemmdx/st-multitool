@@ -3,7 +3,8 @@
 #include "drive_deamon.h"
 #include "ff.h"
 #include "main.h"
-
+#include "FreeRTOS.h"
+#include "task.h"
 #include "stm32h7xx_hal.h"
 #include "stm32h7xx_hal_gpio.h"
 
@@ -93,3 +94,18 @@ void DriveDeamon::errorHandler(void)
     }
 }
 */
+
+void fk_driveDeamonTask(void* params)
+{
+    fk_DriveDeamon_t* pDeamon = (fk_DriveDeamon_t*)params
+    pDeamon->isRunning = true;
+    
+    while(pDeamon->isRunning)
+    {
+        //check if drive is reachable
+
+        //check size of drive
+
+        vTaskDelay(1200);
+    }
+}
