@@ -44,15 +44,16 @@ static void createFolderStructure(void,fk_DriveDeamon_t* pDeamon)
     f_mkdir(dummy);
 }
 
-fk_DriveSizeInfo_t fk_getSizeInfo(fk_DriveDeamon_t* pDeamon)
+fk_DriveSizeInfo_t fk_getSpaceInfo(fk_DriveDeamon_t* pDeamon)
 {
     fk_DriveSizeInfo_t sInfo;
     DWORD nClust=0;
     FATFS* dummyFS;
     f_getfree(pDeamon->mntPoint,&nClust,&dummyFS);
     //More calulations need to be done
-    sInfo.free = dummyFS->free_clst;
-    sInfo.total = dummyFS->fsize;
+    sInfo.free = dummyFS->free_clst * dummyFS->csize;
+    sInfo.total = (dummyFS->n_fatent -2 ) *dummyFS->csize;
+    sInfo.used = sInfo.total - sInfo.free;
     return sInfo;
 }
 
@@ -109,3 +110,4 @@ void fk_driveDeamonTask(void* params)
         vTaskDelay(1200);
     }
 }
+

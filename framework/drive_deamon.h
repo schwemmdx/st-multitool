@@ -37,7 +37,7 @@ typedef struct
 
 
 void fk_initDriveDeamon(char* mountPoint,fk_DriveDeamon_t* pDeamon);
-fk_DriveSizeInfo_t fk_getSizeInfo(fk_DriveDeamon_t* pDeamon);
+fk_DriveSizeInfo_t fk_getSpaceInfo(fk_DriveDeamon_t* pDeamon);
 uint8_t fk_getDriveStatus(void);
 
 
