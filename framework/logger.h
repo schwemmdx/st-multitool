@@ -1,5 +1,5 @@
-#ifndef _EVENT_LOGGER_H_
-#define _EVENT_LOGGER_H_
+#ifndef _LOGGER_H_
+#define _LOGGER_H_
 
 #include <stdbool.h>
 #include "ff.h"
@@ -28,4 +28,4 @@ void fk_LoglinkRTC(void* pRTC);
 void fk_LogTask(void);
 
 
-#endif /*_EVENT_LOGGER_H_*/
+#endif /*_LOGGER_H_*/

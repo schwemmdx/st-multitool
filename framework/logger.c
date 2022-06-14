@@ -2,7 +2,7 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "stdbool.h"
-#include "event_logger.h"
+#include "logger.h"
 
 
 void fk_InitLogger(char* path,fk_Logger_t* pLogger)
